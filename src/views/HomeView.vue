@@ -51,19 +51,20 @@ const animateFloating = (ref: Ref<HTMLElement | null>, index: number = 0) => {
         type: 'spring',
         stiffness: 350,
         damping: 20,
-        delay: index * 150,
+        delay: index * 250,
         onComplete: () => {
           variant.value = 'levitate'
         }
       }
     },
     levitate: {
-      y: 15,
+      y: 10,
       transition: {
         duration: 2000,
         repeat: Infinity,
         ease: 'easeInOut',
-        repeatType: 'mirror'
+        repeatType: 'mirror',
+        delay: index * 500
       }
     }
   })
@@ -155,11 +156,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-dvh w-full overflow-x-hidden">
-    <QLogo class="absolute top-2 left-2 w-16 h-16 fill-endeavour" ref="qLogoRef" />
+  <div class="h-dvh max-h-dvh w-full overflow-x-hidden">
+    <QLogo class="absolute top-2 left-2 w-16 h-16 fill-astronaut" ref="qLogoRef" />
     <div
       ref="pageContent"
-      class="w-full h-dvh overflow-x-hidden overflow-y-hidden grid grid-cols-1 grid-rows-[auto_1fr_auto] justify-items-center align-items-center gap-4 p-4"
+      class="w-full h-full overflow-x-hidden overflow-y-hidden grid grid-cols-1 grid-rows-[auto_minmax(0,_1fr)_auto] justify-items-center align-items-center gap-4 p-4"
     >
       <div class="col-start-1 col-end-1 row-start-1 row-end-1">
         <img src="@/assets/img/winny-logo_600x600.webp" class="max-h-28" ref="winnyLogo" />
@@ -167,35 +168,45 @@ onMounted(() => {
       <div
         ref="start"
         :leave="{ opacity: 0 }"
-        class="self-start col-start-1 col-end-1 row-start-2 row-end-2 flex flex-col justify-center items-center gap-6"
+        class="col-start-1 col-end-1 row-start-2 row-end-2 flex flex-col justify-center items-center"
       >
-        <div class="row-start-1 row-end-1">
-          <img src="@/assets/img/start_600x600.webp" class="max-h-80" />
+        <div class="h-2/4 flex flex-row justify-center">
+          <img src="@/assets/img/bear-circle.webp" class="h-full w-auto object-contain" />
         </div>
-        <div class="col-start-1 col-end-1 row-start-2 row-end-2" ref="buttonStart">
+        <div class="h-1/4 flex flex-row justify-center">
+          <img src="@/assets/img/start-text.webp" class="h-full w-auto object-contain" />
+        </div>
+        <div class="h-1/4" ref="buttonStart">
           <RouterLink to="/game" custom v-slot="{ navigate }">
             <Button type="button" @click="navigate" ref="buttonStartRef">Iniciar</Button>
           </RouterLink>
         </div>
       </div>
       <div
-        class="w-full text-endeavour col-start-1 col-end-1 row-start-3 row-end-3 flex flex-row justify-center gap-10"
+        class="w-full col-start-1 col-end-1 row-start-3 row-end-3 flex flex-row justify-center gap-10"
       >
-        <div class="max-w-64 w-1/2">
-          <p class="text-lg text-center" ref="footerParagraphLeft">
-            En
-            <span class="text-2xl text-mauvelous"
-              >{{ useGameStore().startGameCountDown }} segundos</span
-            >
-            deberas memorizar las fichas
+        <div class="max-w-64 w-1/2 relative">
+          <img
+            src="@/assets/img/timer-start.svg"
+            class="w-10 absolute -top-6 -left-0 object-contain"
+          />
+          <p class="text-lg text-center text-endeavour" ref="footerParagraphLeft">
+            <span>En </span>
+            <span class="text-2xl text-laser">
+              {{ useGameStore().startGameCountDown }} segundos
+            </span>
+            <br />
+            <span>deberas memorizar las fichas</span>
           </p>
         </div>
-        <div class="max-w-64 w-1/2">
-          <p class="text-lg text-center" ref="footerParagraphRight">
+        <div class="max-w-64 w-1/2 relative">
+          <img
+            src="@/assets/img/bounce-stars.svg"
+            class="w-44 absolute -top-24 -left-1 object-contain"
+          />
+          <p class="text-lg text-center text-endeavour" ref="footerParagraphRight">
             Son
-            <span class="text-2xl text-mauvelous"
-              >{{ useGameStore().attemptsLimit }} movimientos</span
-            >
+            <span class="text-2xl text-laser">{{ useGameStore().attemptsLimit }} movimientos</span>
             para armar la mayor cantidad de parejas
           </p>
         </div>

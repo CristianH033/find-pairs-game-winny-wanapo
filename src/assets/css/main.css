@@ -22,14 +22,7 @@
   body {
     @apply w-screen h-dvh;
     @apply overflow-x-hidden overflow-y-hidden;
-    /* background: rgb(114, 189, 233);
-    background: linear-gradient(
-      0deg,
-      rgba(114, 189, 233, 1) 0%,
-      rgba(114, 189, 233, 1) 40%,
-      rgba(255, 255, 255, 1) 100%
-    ); */
-    @apply bg-gradient-to-t from-seagull to-seagull-50;
+    @apply bg-spring-wood;
   }
 
   @keyframes rotate {
@@ -46,23 +39,4 @@
 }
 
 @layer utilities {
-  .primary-gradient {
-    background: rgb(114, 189, 233);
-    background: linear-gradient(
-      0deg,
-      rgba(114, 189, 233, 1) 0%,
-      rgba(114, 189, 233, 1) 40%,
-      rgba(255, 255, 255, 1) 100%
-    );
-  }
-
-  .secondary-gradient {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 40%,
-      rgba(114, 189, 233, 1) 100%
-    );
-  }
 }

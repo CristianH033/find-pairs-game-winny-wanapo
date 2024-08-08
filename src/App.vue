@@ -6,11 +6,11 @@ import { onMounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
 import SolarStarBold from '~icons/solar/star-bold'
 
-const stars = generateUniformPositions(10, {
-  minGridSize: 10,
-  maxGridSize: 100,
-  minSize: 2,
-  maxSize: 5
+const stars = generateUniformPositions(6, {
+  minGridSize: 3,
+  maxGridSize: 3,
+  minSize: 1,
+  maxSize: 4
 })
 
 const clouds = generateUniformPositions(5, {
@@ -120,7 +120,7 @@ onMounted(() => {
         ref="starsRefs"
       >
         <SolarStarBold
-          class="text-seagull-50"
+          class="text-laser"
           :style="{
             width: `${star.w}rem`,
             height: `${star.h}rem`,
