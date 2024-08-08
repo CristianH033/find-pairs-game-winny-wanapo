@@ -4,7 +4,9 @@ import QLogo from '@/components/icons/QLogo.vue'
 import { useGameStore } from '@/stores/game'
 import { useMotion } from '@vueuse/motion'
 import { onMounted, ref, type Ref } from 'vue'
-import { RouterLink, onBeforeRouteLeave } from 'vue-router'
+import { RouterLink, onBeforeRouteLeave, useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const qLogoRef = ref<HTMLDivElement | null>(null)
 const pageContent = ref<HTMLDivElement | null>(null)
@@ -157,7 +159,11 @@ onMounted(() => {
 
 <template>
   <div class="h-dvh max-h-dvh w-full overflow-x-hidden">
-    <QLogo class="absolute top-2 left-2 w-16 h-16 fill-astronaut" ref="qLogoRef" />
+    <QLogo
+      class="absolute top-2 left-2 w-16 h-16 fill-astronaut"
+      ref="qLogoRef"
+      @click="() => router.push({ name: 'config' })"
+    />
     <div
       ref="pageContent"
       class="w-full h-full overflow-x-hidden overflow-y-hidden grid grid-cols-1 grid-rows-[auto_minmax(0,_1fr)_auto] justify-items-center align-items-center gap-4 p-4"
