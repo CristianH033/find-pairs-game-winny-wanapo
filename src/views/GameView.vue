@@ -150,7 +150,7 @@ onMounted(() => {
   >
     <div class="h-20 w-full flex flex-row justify-between gap-8 p-0">
       <div class="w-1/4 flex flex-row justify-start items-center">
-        <QLogo class="fill-endeavour max-h-full max-w-full w-20 h-20" />
+        <QLogo class="fill-astronaut max-h-full max-w-full w-20 h-20" />
       </div>
       <div class="w-2/4 flex flex-row justify-center items-center grow">
         <PairCounter
@@ -173,7 +173,7 @@ onMounted(() => {
       <div class="w-2/3 flex flex-row justify-start items-center">
         <Badge class="flex-row py-1 translate-x-[3rem]">
           <template #left-icon>
-            <Timer class="w-8 h-8 scale-[3] origin-right" />
+            <img src="@/assets/img/crono.svg" class="w-8 h-8 scale-[3] origin-right" />
           </template>
           <div class="flex-col">
             <div class="text-sm">{{ timeLeft }} segundos</div>
@@ -184,7 +184,7 @@ onMounted(() => {
         </Badge>
       </div>
       <div class="w-1/3 flex flex-row justify-end items-center self-end">
-        <img src="@/assets/img/bottom-bear_300x300.webp" class="max-h-full max-w-full w-36" />
+        <img src="@/assets/img/bottom-bear.webp" class="max-h-full max-w-full w-36" />
       </div>
     </div>
   </div>

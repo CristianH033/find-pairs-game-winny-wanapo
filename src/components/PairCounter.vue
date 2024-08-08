@@ -5,7 +5,7 @@ const props = defineProps<{ pairCount: number; maxPairs: number }>()
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="fill-moon-raker stroke-moon-raker-50 stroke-[1rem]"
+    class="fill-spring-wood stroke-white stroke-[1rem]"
     viewBox="0 0 424.291 312.031"
   >
     <defs>
@@ -22,7 +22,7 @@ const props = defineProps<{ pairCount: number; maxPairs: number }>()
     <text
       x="50%"
       y="35%"
-      class="fill-moon-raker-50 stroke-moon-raker"
+      class="fill-astronaut stroke-astronaut-50"
       dominant-baseline="middle"
       text-anchor="middle"
       font-size="5rem"
@@ -34,14 +34,14 @@ const props = defineProps<{ pairCount: number; maxPairs: number }>()
       x="50%"
       y="60%"
       alignment-baseline="baseline"
-      class="fill-moon-raker-50 stroke-moon-raker"
+      class="fill-astronaut stroke-astronaut-50"
       dominant-baseline="middle"
       text-anchor="middle"
       font-size="5rem"
       stroke-width=".1rem"
     >
-      <tspan class="fill-moon-raker-600">{{ pairCount }}</tspan>
-      <tspan class="fill-moon-raker-50">/{{ props.maxPairs }}</tspan>
+      <tspan class="fill-laser stroke-laser-50">{{ pairCount }}</tspan>
+      <tspan class="fill-astronaut stroke-astronaut-50">/{{ props.maxPairs }}</tspan>
     </text>
   </svg>
 </template>
