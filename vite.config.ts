@@ -23,7 +23,7 @@ export default defineConfig({
         name: 'Concéntrese - Winny',
         short_name: 'Concéntrese',
         description: 'Pon a prueba tu memoria y diviertete con el juego de Winny',
-        theme_color: '#00509D',
+        theme_color: '#2C3180',
         icons: [
           {
             src: 'pwa-64x64.png',
