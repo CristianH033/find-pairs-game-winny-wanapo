@@ -4,7 +4,6 @@ import Button from '@/components/controls/Button.vue'
 import CountDown from '@/components/CountDown.vue'
 import GameBoard from '@/components/GameBoard.vue'
 import QLogo from '@/components/icons/QLogo.vue'
-import Timer from '@/components/icons/Timer.vue'
 import ModalDialog from '@/components/ModalDialog.vue'
 import PairCounter from '@/components/PairCounter.vue'
 import { useGameStore } from '@/stores/game'
@@ -42,11 +41,6 @@ invoke(async () => {
   await until(startGameCountDown).toBe(0)
   gameStore.startGame()
   resume()
-})
-
-invoke(async () => {
-  await until(attempts).toBe(gameStore.getAttemptsLimit)
-  endGame({ title: 'Juego Terminado', text: 'Se acabaron tus intentos' })
 })
 
 invoke(async () => {
@@ -93,7 +87,13 @@ watch(
 )
 
 onBeforeRouteLeave(async () => {
-  if (attempts.value < gameStore.getAttemptsLimit && timeLeft.value > 0) return false
+  if (
+    attempts.value < gameStore.getAttemptsLimit &&
+    timeLeft.value > 0 &&
+    gameStore.getTilesUnmatched.length > 0
+  ) {
+    return false
+  }
 
   await await Promise.all([
     ...animatedElements.map((ref) => {
@@ -122,6 +122,9 @@ onBeforeRouteLeave(async () => {
 })
 
 onMounted(() => {
+  if (gameStore.gameStarted) resume()
+  if (gameStore.gameStarted && gameStore.getTilesUnmatched.length === 0) endGame()
+
   animatedElements.forEach((ref, index) => {
     useMotion(ref, {
       initial: {
